@@ -127,6 +127,12 @@ Get OK
 cd elixir
 docker kill elixir
 docker rm elixir
+
+```
+
+```
+sed -i '/^ENV=/ s/=.*/=/' validator.env
+
 ```
 
 **You can run both testnet and mainnet or mainnet only**
