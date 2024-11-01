@@ -146,7 +146,7 @@ docker pull elixirprotocol/validator:testnet-3 --platform linux/amd64
 docker run -d \
   --env-file ./validator.env \
   --name elixir-testnet \
-  --ENV=testnet-3 \
+  --env ENV=testnet-3 \
   --restart unless-stopped \
   -p 17690:17690 \
   elixirprotocol/validator:testnet-3
@@ -159,12 +159,12 @@ docker pull elixirprotocol/validator --platform linux/amd64
 ```
 
 ```
-docker run -d \
-  --env-file ./validator.env \
+docker run \
+  --env-file validator.env \
   --name elixir-mainnet \
-  --ENV=prod \
-  --restart unless-stopped \
+  --env ENV=prod \
   -p 17691:17690 \
+  --restart unless-stopped \
   elixirprotocol/validator
 ```
 
