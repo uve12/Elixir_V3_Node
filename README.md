@@ -93,7 +93,7 @@ docker pull elixirprotocol/validator:v3 --platform linux/amd64
 ```
 docker run -d \
   --env-file ./validator.env \
-  --name elixir \
+  --name elixir-testnet \
   --restart unless-stopped \
   -p 17690:17690 \
   elixirprotocol/validator:v3
@@ -124,9 +124,17 @@ Get OK
 
 **Upgrading Node**
 ```
+cd elixir
 docker kill elixir
 docker rm elixir
-docker pull elixirprotocol/validator:v3 --platform linux/amd64
+```
+
+**You can run both testnet and mainnet or mainnet only**
+
+
+**Testnet**
+```
+docker pull elixirprotocol/validator:testnet-3 --platform linux/amd64
 ```
 ```
 cd elixir
@@ -134,11 +142,32 @@ cd elixir
 ```
 docker run -d \
   --env-file ./validator.env \
-  --name elixir \
+  --name elixir-testnet \
+  --ENV=testnet-3 \
   --restart unless-stopped \
   -p 17690:17690 \
-  elixirprotocol/validator:v3
+  elixirprotocol/validator:testnet-3
 ```
+
+**Mainnet**
+
+```
+docker pull elixirprotocol/validator --platform linux/amd64
+```
+
+```
+docker run -d \
+  --env-file ./validator.env \
+  --name elixir-mainnet \
+  --ENV=prod \
+  --restart unless-stopped \
+  -p 17691:17690 \
+  elixirprotocol/validator
+```
+
+**Change the port value as per your need**
+
+
 Check logs
 ```
 docker logs -f elixir
