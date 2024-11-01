@@ -137,9 +137,6 @@ docker rm elixir
 docker pull elixirprotocol/validator:testnet-3 --platform linux/amd64
 ```
 ```
-cd elixir
-```
-```
 docker run -d \
   --env-file ./validator.env \
   --name elixir-testnet \
